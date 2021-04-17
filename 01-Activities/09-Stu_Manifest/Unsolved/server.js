@@ -1,6 +1,6 @@
 var express = require("express");
 var mongoose = require("mongoose");
-
+require("dotenv").config();
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -12,7 +12,8 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/imageperformance", {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 app.listen(PORT, function() {
